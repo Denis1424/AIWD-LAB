@@ -1,0 +1,2383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SA20 Season 4 (2025-26) | South Africa's Premier T20 League</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <style>
+        :root {
+            --primary-dark: #0c1b33;
+            --secondary-dark: #1a2c4d;
+            --accent-blue: #0077ff;
+            --accent-green: #00ff88;
+            --accent-gold: #ffd700;
+            --text-primary: #ffffff;
+            --text-secondary: #b0c7ff;
+        }
+        
+        body {
+            background-color: var(--primary-dark);
+            color: var(--text-primary);
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            overflow-x: hidden;
+        }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--secondary-dark);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--accent-blue);
+            border-radius: 5px;
+        }
+        
+        /* Navbar */
+        .navbar-sa20 {
+            background: rgba(12, 27, 51, 0.95) !important;
+            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+            border-bottom: 2px solid var(--accent-blue);
+            padding: 15px 0;
+            transition: all 0.3s ease;
+        }
+        
+        .navbar-sa20.scrolled {
+            padding: 10px 0;
+            box-shadow: 0 5px 20px rgba(0, 119, 255, 0.2);
+        }
+        
+        .sa20-logo {
+            height: 40px;
+            filter: drop-shadow(0 0 10px rgba(0, 119, 255, 0.5));
+        }
+        
+        .season-badge {
+            background: linear-gradient(45deg, var(--accent-blue), var(--accent-green));
+            color: white;
+            font-size: 0.8rem;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-weight: 600;
+            margin-left: 10px;
+        }
+        
+        .nav-link {
+            color: var(--text-secondary) !important;
+            font-weight: 600;
+            padding: 10px 15px !important;
+            margin: 0 5px;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+        
+        .nav-link:hover, .nav-link.active {
+            color: var(--text-primary) !important;
+            background: rgba(0, 119, 255, 0.2);
+            transform: translateY(-2px);
+        }
+        
+        .navbar-toggler {
+            border: 2px solid var(--accent-blue);
+            padding: 5px 10px;
+        }
+        
+        .navbar-toggler-icon {
+            filter: invert(1);
+        }
+        
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(rgba(12, 27, 51, 0.9), rgba(12, 27, 51, 0.7)),
+                        url('captains.png');
+            background-size: cover;
+            background-position: center;
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent 30%, rgba(0, 119, 255, 0.1) 50%, transparent 70%);
+            animation: shine 3s infinite;
+        }
+        
+        @keyframes shine {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            background: linear-gradient(to right, #0077ff, #00ff88);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 30px rgba(0, 119, 255, 0.3);
+            margin-bottom: 20px;
+        }
+        
+        .season-title {
+            font-size: 1.2rem;
+            color: var(--accent-green);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            margin-bottom: 30px;
+        }
+        
+        .btn-sa20 {
+            background: linear-gradient(45deg, var(--accent-blue), var(--accent-green));
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(0, 119, 255, 0.3);
+        }
+        
+        .btn-sa20:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 119, 255, 0.4);
+        }
+        
+        /* Section Styling */
+        .section-title {
+            position: relative;
+            padding-bottom: 15px;
+            margin-bottom: 40px;
+            font-weight: 700;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(to right, var(--accent-blue), var(--accent-green));
+            border-radius: 2px;
+        }
+        
+        .section-title.center::after {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        /* Team Cards */
+        .team-card {
+            background: var(--secondary-dark);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+            cursor: pointer;
+            height: 100%;
+        }
+        
+        .team-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent-blue);
+            box-shadow: 0 15px 30px rgba(0, 119, 255, 0.2);
+        }
+        
+        .team-logo {
+            height: 80px;
+            width: 80px;
+            object-fit: contain;
+            margin: 20px auto;
+        }
+        
+        .team-name {
+            font-size: 1.3rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 5px;
+        }
+        
+        .team-owner {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            text-align: center;
+            margin-bottom: 15px;
+        }
+        
+        /* Player Cards */
+        .player-card {
+            background: var(--secondary-dark);
+            border-radius: 10px;
+            padding: 20px;
+            transition: all 0.3s;
+            cursor: pointer;
+            border: 1px solid transparent;
+            height: 100%;
+        }
+        
+        .player-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-green);
+            box-shadow: 0 10px 20px rgba(0, 255, 136, 0.1);
+        }
+        
+        .player-img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--accent-blue);
+            margin: 0 auto 15px;
+            background: linear-gradient(45deg, var(--secondary-dark), var(--primary-dark));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--accent-green);
+        }
+        
+        .player-name {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+            text-align: center;
+        }
+        
+        .player-role {
+            color: var(--accent-green);
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-bottom: 5px;
+            text-align: center;
+        }
+        
+        .player-nationality {
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        
+        .captain-badge {
+            display: inline-block;
+            background: var(--accent-gold);
+            color: var(--primary-dark);
+            font-size: 0.7rem;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-weight: 600;
+            margin-top: 5px;
+        }
+        
+        /* Match Cards */
+        .match-card {
+            background: var(--secondary-dark);
+            border-radius: 15px;
+            padding: 20px;
+            border-left: 5px solid var(--accent-blue);
+            transition: all 0.3s;
+        }
+        
+        .match-card.live {
+            border-left-color: var(--accent-green);
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(0, 255, 136, 0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(0, 255, 136, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(0, 255, 136, 0); }
+        }
+        
+        .match-teams {
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+        
+        .match-status {
+            display: inline-block;
+            padding: 5px 15px;
+            background: var(--accent-blue);
+            color: white;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .match-status.live {
+            background: var(--accent-green);
+        }
+        
+        /* Points Table */
+        .points-table {
+            background: var(--secondary-dark);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+        
+        .table-dark {
+            background-color: transparent;
+            margin-bottom: 0;
+        }
+        
+        .table-dark th {
+            border-color: var(--primary-dark);
+            font-weight: 600;
+            cursor: pointer;
+            -webkit-user-select: none;
+            user-select: none;
+        }
+        
+        .table-dark th:hover {
+            background: rgba(0, 119, 255, 0.2);
+        }
+        
+        .table-dark td {
+            border-color: var(--primary-dark);
+            vertical-align: middle;
+        }
+        
+        .team-row {
+            transition: background 0.3s;
+        }
+        
+        .team-row:hover {
+            background: rgba(0, 119, 255, 0.1);
+        }
+        
+        /* News Cards */
+        .news-card {
+            background: var(--secondary-dark);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.3s;
+            height: 100%;
+        }
+        
+        .news-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 119, 255, 0.2);
+        }
+        
+        .news-img {
+            height: 200px;
+            background: linear-gradient(45deg, var(--accent-blue), var(--accent-green));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+        }
+        
+        .news-content {
+            padding: 20px;
+        }
+        
+        .news-date {
+            color: var(--accent-green);
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+        
+        /* Footer */
+        .footer {
+            background: var(--secondary-dark);
+            padding: 50px 0 20px;
+            margin-top: 50px;
+            border-top: 2px solid var(--accent-blue);
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: var(--primary-dark);
+            color: white;
+            border-radius: 50%;
+            margin-right: 10px;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+        
+        .social-links a:hover {
+            background: var(--accent-blue);
+            transform: translateY(-3px);
+        }
+        
+        /* Modal */
+        .modal-content {
+            background: var(--secondary-dark);
+            color: var(--text-primary);
+            border: 2px solid var(--accent-blue);
+        }
+        
+        .modal-header {
+            border-bottom: 1px solid var(--primary-dark);
+        }
+        
+        .modal-footer {
+            border-top: 1px solid var(--primary-dark);
+        }
+        
+        /* Player Role Colors */
+        .role-batter {
+            color: #ff6b6b;
+        }
+        
+        .role-bowler {
+            color: #4ecdc4;
+        }
+        
+        .role-allrounder {
+            color: #ffd93d;
+        }
+        
+        .role-wk {
+            color: #6c5ce7;
+        }
+        
+        /* Squad Grid */
+        .squad-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .squad-grid {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .team-logo {
+                height: 60px;
+                width: 60px;
+            }
+            
+            .squad-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* ========== NEW: INTERACTIVE FAN ZONE STYLES ========== */
+.fan-zone-section {
+    background: linear-gradient(135deg, var(--primary-dark) 0%, #0f1f3f 100%);
+    position: relative;
+    overflow: hidden;
+    padding: 60px 0;
+    border-top: 1px solid rgba(0, 119, 255, 0.3);
+    border-bottom: 1px solid rgba(0, 119, 255, 0.3);
+}
+
+.fan-zone-section::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(0, 119, 255, 0.1) 0%, transparent 70%);
+    animation: rotate 30s linear infinite;
+    pointer-events: none;
+}
+
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.fan-zone-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, #fff 0%, var(--accent-blue) 50%, var(--accent-green) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 10px;
+    position: relative;
+    display: inline-block;
+}
+
+.fan-zone-subtitle {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    margin-bottom: 40px;
+    position: relative;
+}
+
+/* Premium Card Styles */
+.fan-card {
+    background: rgba(26, 44, 77, 0.7);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(0, 119, 255, 0.2);
+    border-radius: 20px;
+    padding: 25px;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.fan-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(0, 255, 136, 0.1), transparent);
+    transition: left 0.5s ease;
+}
+
+.fan-card:hover::before {
+    left: 100%;
+}
+
+.fan-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(0, 119, 255, 0.3);
+    border-color: var(--accent-green);
+}
+
+.fan-card-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid rgba(0, 255, 136, 0.2);
+}
+
+.fan-card-icon {
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, var(--accent-blue), var(--accent-green));
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 15px;
+    font-size: 1.5rem;
+    color: white;
+    box-shadow: 0 5px 15px rgba(0, 119, 255, 0.3);
+}
+
+.fan-card-title {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin: 0;
+    background: linear-gradient(to right, #fff, var(--accent-green));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Calculator Styles */
+.calculator-input-group {
+    margin-bottom: 20px;
+}
+
+.calculator-label {
+    color: var(--text-secondary);
+    margin-bottom: 8px;
+    font-weight: 500;
+    font-size: 0.95rem;
+}
+
+.calculator-input {
+    width: 100%;
+    padding: 12px 15px;
+    background: rgba(12, 27, 51, 0.8);
+    border: 2px solid rgba(0, 119, 255, 0.3);
+    border-radius: 12px;
+    color: white;
+    font-size: 1rem;
+    transition: all 0.3s;
+}
+
+.calculator-input:focus {
+    outline: none;
+    border-color: var(--accent-green);
+    box-shadow: 0 0 15px rgba(0, 255, 136, 0.3);
+}
+
+.calculator-result {
+    background: linear-gradient(135deg, var(--primary-dark), var(--secondary-dark));
+    border-radius: 15px;
+    padding: 20px;
+    text-align: center;
+    margin-top: 20px;
+    border: 2px solid transparent;
+    transition: all 0.3s;
+    opacity: 0;
+    transform: scale(0.9);
+}
+
+.calculator-result.show {
+    opacity: 1;
+    transform: scale(1);
+    border-color: var(--accent-green);
+    box-shadow: 0 0 30px rgba(0, 255, 136, 0.2);
+}
+
+.result-value {
+    font-size: 3rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, var(--accent-blue), var(--accent-green));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    line-height: 1;
+}
+
+.result-label {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin-top: 5px;
+}
+
+/* Team Selector Styles */
+.team-selector {
+    width: 100%;
+    padding: 12px 15px;
+    background: linear-gradient(135deg, var(--primary-dark), var(--secondary-dark));
+    border: 2px solid var(--accent-blue);
+    border-radius: 12px;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-bottom: 20px;
+}
+
+.team-selector:hover {
+    border-color: var(--accent-green);
+    box-shadow: 0 0 20px rgba(0, 255, 136, 0.2);
+}
+
+.team-selector option {
+    background: var(--secondary-dark);
+    color: white;
+}
+
+.team-info-panel {
+    background: rgba(0, 119, 255, 0.1);
+    border-radius: 15px;
+    padding: 20px;
+    border: 1px solid rgba(0, 255, 136, 0.2);
+    transition: all 0.3s;
+    animation: slideIn 0.5s ease;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.team-info-title {
+    color: var(--accent-green);
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.team-info-item {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    margin-bottom: 10px;
+    transition: transform 0.3s;
+}
+
+.team-info-item:hover {
+    transform: translateX(10px);
+    background: rgba(0, 119, 255, 0.2);
+}
+
+.team-info-icon {
+    width: 30px;
+    color: var(--accent-blue);
+    margin-right: 10px;
+}
+
+/* Booking Form Styles */
+.booking-form {
+    background: rgba(12, 27, 51, 0.6);
+    border-radius: 15px;
+    padding: 20px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    color: var(--text-secondary);
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.form-control-fan {
+    width: 100%;
+    padding: 12px 15px;
+    background: rgba(26, 44, 77, 0.8);
+    border: 2px solid rgba(0, 119, 255, 0.3);
+    border-radius: 12px;
+    color: white;
+    transition: all 0.3s;
+}
+
+.form-control-fan:focus {
+    outline: none;
+    border-color: var(--accent-green);
+    box-shadow: 0 0 15px rgba(0, 255, 136, 0.2);
+}
+
+.btn-fan {
+    width: 100%;
+    padding: 14px;
+    background: linear-gradient(45deg, var(--accent-blue), var(--accent-green));
+    border: none;
+    border-radius: 12px;
+    color: white;
+    font-weight: 600;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-fan::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.btn-fan:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+.btn-fan:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(0, 255, 136, 0.3);
+}
+
+.booking-confirmation {
+    margin-top: 20px;
+    padding: 20px;
+    background: linear-gradient(135deg, rgba(0, 255, 136, 0.1), rgba(0, 119, 255, 0.1));
+    border: 2px solid var(--accent-green);
+    border-radius: 15px;
+    text-align: center;
+    animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes popIn {
+    0% { opacity: 0; transform: scale(0.5); }
+    100% { opacity: 1; transform: scale(1); }
+}
+
+.confirmation-icon {
+    font-size: 3rem;
+    color: var(--accent-green);
+    margin-bottom: 10px;
+}
+
+.confirmation-text {
+    font-size: 1.2rem;
+    color: var(--accent-green);
+    font-weight: 600;
+}
+
+/* Welcome Banner */
+.welcome-banner {
+    background: linear-gradient(90deg, var(--accent-blue), var(--accent-green));
+    padding: 12px 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    position: relative;
+    animation: slideDown 0.5s ease-out;
+    color: white;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 5px 20px rgba(0, 255, 136, 0.3);
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.welcome-banner i {
+    font-size: 1.5rem;
+    margin-right: 10px;
+}
+
+.welcome-close {
+    cursor: pointer;
+    padding: 5px;
+    opacity: 0.7;
+    transition: opacity 0.3s;
+}
+
+.welcome-close:hover {
+    opacity: 1;
+}
+
+/* Live Search Styles */
+.player-search-container {
+    max-height: 400px;
+    overflow-y: auto;
+    padding-right: 5px;
+}
+
+.player-search-container::-webkit-scrollbar {
+    width: 5px;
+}
+
+.player-search-container::-webkit-scrollbar-thumb {
+    background: var(--accent-green);
+    border-radius: 10px;
+}
+
+.search-item {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    background: rgba(12, 27, 51, 0.8);
+    border-radius: 10px;
+    margin-bottom: 8px;
+    border: 1px solid transparent;
+    transition: all 0.3s;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.search-item:hover {
+    border-color: var(--accent-blue);
+    transform: translateX(5px);
+    background: rgba(0, 119, 255, 0.2);
+}
+
+.search-item-logo {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--secondary-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 15px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--accent-green);
+}
+
+.search-item-details {
+    flex: 1;
+}
+
+.search-item-name {
+    font-weight: 600;
+    margin-bottom: 2px;
+}
+
+.search-item-role {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+.hidden-search-item {
+    display: none;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .fan-zone-title {
+        font-size: 2rem;
+    }
+    
+    .fan-card {
+        margin-bottom: 20px;
+    }
+    
+    .result-value {
+        font-size: 2.5rem;
+    }
+}
+
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-sa20 fixed-top">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="#">
+                <img src="sa 20 logo.png" alt="SA20 Logo" class="sa20-logo">
+                <span class="season-badge">Season 4</span>
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" title="Toggle navigation menu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#teams">Teams</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#players">Players</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#matches">Matches</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#points-table">Points Table</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#news">News</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <div class="season-title">SA20 2025-26</div>
+                    <h1 class="hero-title">SEASON 4</h1>
+                    <p class="hero-subtitle">South Africa's Premier T20 Cricket Competition</p>
+                    <p>Witness world-class cricket action with 6 elite franchises featuring international stars and homegrown talent. The ultimate T20 showdown returns bigger and better!</p>
+                    <button class="btn btn-sa20 mt-3" onclick="scrollToSection('matches')">
+                        <i class="bi bi-calendar-event me-2"></i>View Fixtures
+                    </button>
+                    <button class="btn btn-outline-light mt-3 ms-3" onclick="scrollToSection('teams')">
+                        <i class="bi bi-people me-2"></i>View Squads
+                    </button>
+                </div>
+                <div class="col-lg-6">
+                    <div class="row mt-4 mt-lg-0">
+                        <div class="col-6 mb-3">
+                            <div class="team-card p-3 text-center" onclick="filterTeam('MICT')">
+                                <img src="mict.png" alt="MI Cape Town" class="team-logo">
+                                <div class="team-name">MI Cape Town</div>
+                                <div class="team-owner">Mumbai Indians</div>
+                            </div>
+                        </div>
+                        <div class="col-6 mb-3">
+                            <div class="team-card p-3 text-center" onclick="filterTeam('DSG')">
+                                <img src="dsg.png" alt="Durban's Super Giants" class="team-logo">
+                                <div class="team-name">Durban's Super Giants</div>
+                                <div class="team-owner">RPSG Group</div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="team-card p-3 text-center" onclick="filterTeam('JSK')">
+                                <img src="jsk.png" alt="Joburg Super Kings" class="team-logo">
+                                <div class="team-name">Joburg Super Kings</div>
+                                <div class="team-owner">Chennai Super Kings</div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="team-card p-3 text-center" onclick="filterTeam('SEC')">
+                                <img src="sec.png" alt="Sunrisers EC" class="team-logo">
+                                <div class="team-name">Sunrisers EC</div>
+                                <div class="team-owner">Sun Group</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Teams Section -->
+    <section id="teams" class="py-5">
+        <div class="container">
+            <h2 class="section-title">Teams & Squads <span class="badge bg-primary">Season 4</span></h2>
+            
+            <div class="row mb-4">
+                <div class="col">
+                    <div class="btn-group w-100 flex-wrap" role="group">
+                        <button type="button" class="btn btn-outline-primary active filter-team-btn" data-team="all">All Teams</button>
+                        <button type="button" class="btn btn-outline-primary filter-team-btn" data-team="MICT">MI Cape Town</button>
+                        <button type="button" class="btn btn-outline-primary filter-team-btn" data-team="DSG">Durban's SG</button>
+                        <button type="button" class="btn btn-outline-primary filter-team-btn" data-team="JSK">Joburg SK</button>
+                        <button type="button" class="btn btn-outline-primary filter-team-btn" data-team="PC">Pretoria Capitals</button>
+                        <button type="button" class="btn btn-outline-primary filter-team-btn" data-team="PR">Paarl Royals</button>
+                        <button type="button" class="btn btn-outline-primary filter-team-btn" data-team="SEC">Sunrisers EC</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row mb-4">
+                <div class="col">
+                    <div class="btn-group w-100 flex-wrap" role="group">
+                        <button type="button" class="btn btn-outline-success active filter-role-btn" data-role="all">All Roles</button>
+                        <button type="button" class="btn btn-outline-success filter-role-btn" data-role="Batter">Batters</button>
+                        <button type="button" class="btn btn-outline-success filter-role-btn" data-role="Bowler">Bowlers</button>
+                        <button type="button" class="btn btn-outline-success filter-role-btn" data-role="All-Rounder">All-rounders</button>
+                        <button type="button" class="btn btn-outline-success filter-role-btn" data-role="Wicketkeeper" data-role-alt="Wicketkeeper-Batter">Wicketkeepers</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="squad-container" class="squad-grid">
+                <!-- Player cards will be loaded here dynamically -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Players Section -->
+    <section id="players" class="py-5 bg-dark">
+        <div class="container">
+            <h2 class="section-title">Player Search</h2>
+            
+            <div class="row mb-4">
+                <div class="col-md-6 mx-auto">
+                    <div class="input-group">
+                        <input type="text" id="player-search" class="form-control bg-secondary-dark border-primary text-white" placeholder="Search players by name...">
+                        <button class="btn btn-primary" type="button" onclick="searchPlayers()" title="Search players">
+                            <i class="bi bi-search"></i>
+                        </button>
+                    </div>
+                    <div class="mt-2 text-center">
+                        <small class="text-muted">Search across all 6 teams with 100+ players</small>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="players-container" class="squad-grid">
+                <!-- Player cards will be loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Matches Section -->
+    <section id="matches" class="py-5">
+        <div class="container">
+            <h2 class="section-title">Match Fixtures <span class="badge bg-success">Live</span></h2>
+            
+            <div id="matches-container" class="row">
+                <!-- Match cards will be loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Points Table -->
+    <section id="points-table" class="py-5 bg-dark">
+        <div class="container">
+            <h2 class="section-title">Points Table</h2>
+            
+            <div class="points-table p-3">
+                <table class="table table-dark table-hover">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Team</th>
+                            <th class="sortable" data-sort="played">Played</th>
+                            <th class="sortable" data-sort="won">Won</th>
+                            <th class="sortable" data-sort="lost">Lost</th>
+                            <th class="sortable" data-sort="nrr">NRR</th>
+                            <th class="sortable active-sort" data-sort="points">Points</th>
+                        </tr>
+                    </thead>
+                    <tbody id="points-table-body">
+                        <!-- Points table will be loaded here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- News Section -->
+    <section id="news" class="py-5">
+        <div class="container">
+            <h2 class="section-title">Latest News</h2>
+            
+            <div id="news-container" class="row">
+                <!-- News cards will be loaded here -->
+            </div>
+        </div>
+    </section>
+    <!-- ========== NEW: INTERACTIVE FAN ZONE SECTION ========== -->
+<section class="fan-zone-section py-5" id="fan-zone">
+    <div class="container">
+        <!-- Welcome Banner - Created with onload event -->
+        <div id="welcome-banner-container"></div>
+        
+        <div class="text-center mb-5">
+            <h2 class="fan-zone-title">INTERACTIVE FAN ZONE</h2>
+            <p class="fan-zone-subtitle">Engage with SA20 like never before</p>
+        </div>
+        
+        <div class="row g-4">
+            <!-- Card 1: Strike Rate Calculator -->
+            <div class="col-lg-3 col-md-6">
+                <div class="fan-card">
+                    <div class="fan-card-header">
+                        <div class="fan-card-icon">
+                            <i class="bi bi-calculator"></i>
+                        </div>
+                        <h3 class="fan-card-title">Strike Rate</h3>
+                    </div>
+                    <div class="calculator-input-group">
+                        <label class="calculator-label">Runs Scored</label>
+                        <input type="number" id="runs-input" class="calculator-input" placeholder="e.g., 45" min="0">
+                    </div>
+                    <div class="calculator-input-group">
+                        <label class="calculator-label">Balls Faced</label>
+                        <input type="number" id="balls-input" class="calculator-input" placeholder="e.g., 30" min="1">
+                    </div>
+                    <button class="btn-fan" onclick="calculateStrikeRate()">
+                        <i class="bi bi-lightning-charge me-2"></i>Calculate SR
+                    </button>
+                    <div id="sr-result" class="calculator-result">
+                        <div class="result-value" id="sr-value">0.00</div>
+                        <div class="result-label">Strike Rate</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Card 2: Live Player Search -->
+            <div class="col-lg-3 col-md-6">
+                <div class="fan-card">
+                    <div class="fan-card-header">
+                        <div class="fan-card-icon">
+                            <i class="bi bi-search-heart"></i>
+                        </div>
+                        <h3 class="fan-card-title">Live Player Search</h3>
+                    </div>
+                    <div class="calculator-input-group">
+                        <label class="calculator-label">Search Players</label>
+                        <input type="text" id="fan-player-search" class="calculator-input" placeholder="Type player name..." onkeyup="filterFanPlayers()">
+                    </div>
+                    <div id="player-search-results" class="player-search-container">
+                        <!-- Player results will be populated here -->
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Card 3: Team Captain Info -->
+            <div class="col-lg-3 col-md-6">
+                <div class="fan-card">
+                    <div class="fan-card-header">
+                        <div class="fan-card-icon">
+                            <i class="bi bi-trophy"></i>
+                        </div>
+                        <h3 class="fan-card-title">Team Captain</h3>
+                    </div>
+                    <select id="team-selector" class="team-selector" onchange="updateTeamInfo()" title="Select a team to view captain and squad information">
+                        <option value="">Select a Team</option>
+                        <option value="MICT">MI Cape Town</option>
+                        <option value="DSG">Durban's Super Giants</option>
+                        <option value="JSK">Joburg Super Kings</option>
+                        <option value="PC">Pretoria Capitals</option>
+                        <option value="PR">Paarl Royals</option>
+                        <option value="SEC">Sunrisers Eastern Cape</option>
+                    </select>
+                    
+                    <div id="team-info-panel" class="team-info-panel" style="display: none;">
+                        <h4 class="team-info-title" id="selected-team-name"></h4>
+                        <div class="team-info-item">
+                            <i class="bi bi-person-badge team-info-icon"></i>
+                            <div>
+                                <small class="text-secondary">Captain</small>
+                                <div id="team-captain-name" class="fw-bold"></div>
+                            </div>
+                        </div>
+                        <div class="team-info-item">
+                            <i class="bi bi-building team-info-icon"></i>
+                            <div>
+                                <small class="text-secondary">Owner</small>
+                                <div id="team-owner-name"></div>
+                            </div>
+                        </div>
+                        <div class="team-info-item">
+                            <i class="bi bi-people team-info-icon"></i>
+                            <div>
+                                <small class="text-secondary">Squad Size</small>
+                                <div id="team-squad-size"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Card 4: Ticket Booking -->
+            <div class="col-lg-3 col-md-6">
+                <div class="fan-card">
+                    <div class="fan-card-header">
+                        <div class="fan-card-icon">
+                            <i class="bi bi-ticket-perforated"></i>
+                        </div>
+                        <h3 class="fan-card-title">Book Tickets</h3>
+                    </div>
+                    
+                    <form id="ticket-booking-form" class="booking-form" onsubmit="bookTickets(event)">
+                        <div class="form-group">
+                            <label><i class="bi bi-person me-2"></i>Full Name</label>
+                            <input type="text" id="fan-name" class="form-control-fan" placeholder="Enter your name" required>
+                        </div>
+                        <div class="form-group">
+                            <label><i class="bi bi-envelope me-2"></i>Email Address</label>
+                            <input type="email" id="fan-email" class="form-control-fan" placeholder="Enter your email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="ticket-count"><i class="bi bi-ticket me-2"></i>Number of Tickets</label>
+                            <input type="number" id="ticket-count" class="form-control-fan" min="1" max="10" value="2" placeholder="Select number of tickets" title="Number of tickets to book (1-10)" required>
+                        </div>
+                        <button type="submit" class="btn-fan">
+                            <i class="bi bi-check-circle me-2"></i>Book Now
+                        </button>
+                    </form>
+                    
+                    <div id="booking-confirmation" class="booking-confirmation" style="display: none;">
+                        <div class="confirmation-icon">
+                            <i class="bi bi-check-circle-fill"></i>
+                        </div>
+                        <div class="confirmation-text" id="confirmation-message"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <div class="d-flex align-items-center mb-3">
+                        <img src="sa 20 logo.png" alt="SA20 Logo" class="sa20-logo me-3" style="height: 50px;">
+                        <div>
+                            <h5 class="mb-0">SA20 League</h5>
+                            <small class="text-muted">Season 4: 2025-26</small>
+                        </div>
+                    </div>
+                    <p>South Africa's premier T20 cricket league featuring world-class international and local talent.</p>
+                    <div class="social-links mt-4">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 mb-4">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#home" class="text-decoration-none text-secondary">Home</a></li>
+                        <li><a href="#teams" class="text-decoration-none text-secondary">Teams & Squads</a></li>
+                        <li><a href="#matches" class="text-decoration-none text-secondary">Match Fixtures</a></li>
+                        <li><a href="#points-table" class="text-decoration-none text-secondary">Points Table</a></li>
+                        <li><a href="#news" class="text-decoration-none text-secondary">Latest News</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-lg-4 mb-4">
+                    <h5>Contact Info</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><i class="bi bi-geo-alt me-2"></i> Wanderers Stadium, Johannesburg</li>
+                        <li class="mb-2"><i class="bi bi-envelope me-2"></i> info@sa20.co.za</li>
+                        <li class="mb-2"><i class="bi bi-phone me-2"></i> +27 11 123 4567</li>
+                        <li class="mb-2"><i class="bi bi-globe me-2"></i> www.sa20.co.za</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="row mt-4">
+                <div class="col">
+                    <hr class="bg-primary">
+                    <p class="text-center text-secondary mb-0">© 2025-26 SA20 League. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Player Modal -->
+    <div class="modal fade" id="playerModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="playerModalTitle">Player Details</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" title="Close modal"></button>
+                </div>
+                <div class="modal-body" id="playerModalBody">
+                    <!-- Player details will be loaded here -->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- News Modal -->
+    <div class="modal fade" id="newsModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="newsModalTitle">News Details</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" title="Close modal"></button>
+                </div>
+                <div class="modal-body" id="newsModalBody">
+                    <!-- News details will be loaded here -->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Main JavaScript -->
+    <script>
+        // SA20 Season 4 Data (2025-26)
+        const sa20Data = {
+            season: "SA20 2025-26 (Season 4)",
+            teams: {
+                'MICT': {
+                    team_id: 'MICT',
+                    team_name: 'MI Cape Town',
+                    owner: 'Mumbai Indians',
+                    logo: 'mict.png',
+                    players: [
+                        { name: 'Rashid Khan', role: 'All-Rounder', country: 'Afghanistan', captain: true },
+                        { name: 'Trent Boult', role: 'Bowler', country: 'New Zealand' },
+                        { name: 'Nicholas Pooran', role: 'Wicketkeeper-Batter', country: 'West Indies' },
+                        { name: 'Ryan Rickelton', role: 'Wicketkeeper-Batter', country: 'South Africa' },
+                        { name: 'Kagiso Rabada', role: 'Bowler', country: 'South Africa' },
+                        { name: 'George Linde', role: 'All-Rounder', country: 'South Africa' },
+                        { name: 'Corbin Bosch', role: 'All-Rounder', country: 'South Africa' },
+                        { name: 'Rassie van der Dussen', role: 'Batter', country: 'South Africa' },
+                        { name: 'Reeza Hendricks', role: 'Batter', country: 'South Africa' },
+                        { name: 'Dwaine Pretorius', role: 'All-Rounder', country: 'South Africa' },
+                        { name: 'Tristan Luus', role: 'Bowler', country: 'South Africa' },
+                        { name: 'Jason Smith', role: 'Batter', country: 'South Africa' },
+                        { name: 'Tom Moores', role: 'Wicketkeeper-Batter', country: 'England' },
+                        { name: 'Dane Piedt', role: 'Bowler', country: 'South Africa' },
+                        { name: 'Tiaan van Vuuren', role: 'Bowler', country: 'South Africa' },
+                        { name: 'Dan Lategan', role: 'Batter', country: 'South Africa' },
+                        { name: 'Tabraiz Shamsi', role: 'Bowler', country: 'South Africa' },
+                        { name: 'Jacques Snyman', role: 'Batter', country: 'South Africa' },
+                        { name: 'Karim Janat', role: 'All-Rounder', country: 'Afghanistan' }
+                    ]
+                },
+                'DSG': {
+                    team_id: 'DSG',
+                    team_name: 'Durban\'s Super Giants',
+                    owner: 'RPSG Group',
+                    logo: 'dsg.png',
+                    players: [
+                        { name: 'Aiden Markram', role: 'Batter', country: 'South Africa', captain: true },
+                        { name: 'Heinrich Klaasen', role: 'Wicketkeeper-Batter', country: 'South Africa' },
+                        { name: 'Jos Buttler', role: 'Wicketkeeper-Batter', country: 'England' },
+                        { name: 'Sunil Narine', role: 'All-Rounder', country: 'West Indies' },
+                        { name: 'Noor Ahmad', role: 'Bowler', country: 'Afghanistan' },
+                        { name: 'Gerald Coetzee', role: 'Bowler', country: 'South Africa' },
+                        { name: 'Devon Conway', role: 'Wicketkeeper-Batter', country: 'New Zealand' },
+                        { name: 'David Bedingham', role: 'Batter', country: 'South Africa' },
+                        { name: 'Eathan Bosch', role: 'All-Rounder', country: 'South Africa' },
+                        { name: 'Kwena Maphaka', role: 'Bowler', country: 'South Africa' },
+                        { name: 'Marques Ackermann', role: 'Batter', country: 'South Africa' },
+                        { name: 'Tony de Zorzi', role: 'Batter', country: 'South Africa' },
+                        { name: 'Andile Simelane', role: 'All-Rounder', country: 'South Africa' },
+                        { name: 'Dayyaan Galiem', role: 'All-Rounder', country: 'South Africa' },
+                        { name: 'Evan Jones', role: 'Bowler', country: 'South Africa' },
+                        { name: 'Gysbert Wege', role: 'Bowler', country: 'South Africa' },
+                        { name: 'Daryn Dupavillon', role: 'Bowler', country: 'South Africa' },
+                        { name: 'David Wiese', role: 'All-Rounder', country: 'Namibia' },
+                        { name: 'Taijul Islam', role: 'Bowler', country: 'Bangladesh' }
+                    ]
+                },
+                'JSK': {
+                    team_id: 'JSK',
+                    team_name: 'Joburg Super Kings',
+                    owner: 'Chennai Super Kings',
+                    logo: 'jsk.png',
+                    players: [
+                        { name: 'Faf du Plessis', role: 'Batter', country: 'South Africa', captain: true },
+                        { name: 'Donovan Ferreira', role: 'Wicketkeeper-Batter', country: 'South Africa' },
+                        { name: 'James Vince', role: 'Batter', country: 'England' },
+                        { name: 'Akeal Hosein', role: 'All-Rounder', country: 'West Indies' },
+                        { name: 'Richard Gleeson', role: 'Bowler', country: 'England' },
+                        { name: 'Wiaan Mulder', role: 'All-Rounder', country: 'South Africa' },
+                        { name: 'Nandre Burger', role: 'Bowler', country: 'South Africa' },
+                        { name: 'Dan Worrall', role: 'Bowler', country: 'England' },
+                        { name: 'Shubham Ranjane', role: 'All-Rounder', country: 'India' },
+                        { name: 'Brandon King', role: 'Batter', country: 'West Indies' },
+                        { name: 'Reece Topley', role: 'Bowler', country: 'England' },
+                        { name: 'Prenelan Subrayen', role: 'Bowler', country: 'South Africa' },
+                        { name: 'Dian Forrester', role: 'Bowler', country: 'South Africa' },
+                        { name: 'Steve Stolk', role: 'Bowler', country: 'South Africa' },
+                        { name: 'Janco Smit', role: 'All-Rounder', country: 'South Africa' },
+                        { name: 'Neil Timmers', role: 'Wicketkeeper', country: 'South Africa' },
+                        { name: 'Rilee Rossouw', role: 'Batter', country: 'South Africa' },
+                        { name: 'Rivaldo Moonsamy', role: 'Wicketkeeper-Batter', country: 'South Africa' },
+                        { name: 'Imran Tahir', role: 'Bowler', country: 'South Africa' }
+                    ]
+                },
+                'PC': {
+                    team_id: 'PC',
+                    team_name: 'Pretoria Capitals',
+                    owner: 'JSW Group',
+                    logo: 'pc.png',
+                    players: [
+                        { name: 'Keshav Maharaj', role: 'Bowler', country: 'South Africa', captain: true },
+                        { name: 'Dewald Brevis', role: 'Batter', country: 'South Africa' },
+                        { name: 'Andre Russell', role: 'All-Rounder', country: 'West Indies' },
+                        { name: 'Will Jacks', role: 'All-Rounder', country: 'England' },
+                        { name: 'Sherfane Rutherford', role: 'Batter', country: 'West Indies' },
+                        { name: 'Lungi Ngidi', role: 'Bowler', country: 'South Africa' },
+                        { name: 'Craig Overton', role: 'Bowler', country: 'England' },
+                        { name: 'Saqib Mahmood', role: 'Bowler', country: 'England' },
+                        { name: 'Will Smeed', role: 'Batter', country: 'England' },
+                        { name: 'Bryce Parsons', role: 'All-Rounder', country: 'South Africa' },
+                        { name: 'Connor Esterhuizen', role: 'Batter', country: 'South Africa' },
+                        { name: 'Wihan Lubbe', role: 'All-Rounder', country: 'South Africa' },
+                        { name: 'Junaid Dawood', role: 'Bowler', country: 'South Africa' },
+                        { name: 'Codi Yusuf', role: 'Bowler', country: 'South Africa' },
+                        { name: 'Meeka-eel Prince', role: 'Batter', country: 'South Africa' },
+                        { name: 'Bayanda Majola', role: 'Batter', country: 'South Africa' },
+                        { name: 'Sibonelo Makhanya', role: 'Batter', country: 'South Africa' },
+                        { name: 'Gideon Peters', role: 'Bowler', country: 'South Africa' },
+                        { name: 'Lizaad Williams', role: 'Bowler', country: 'South Africa' }
+                    ]
+                },
+                'PR': {
+                    team_id: 'PR',
+                    team_name: 'Paarl Royals',
+                    owner: 'Rajasthan Royals',
+                    logo: 'pr.png',
+                    players: [
+                        { name: 'David Miller', role: 'Batter', country: 'South Africa', captain: true },
+                        { name: 'Sikandar Raza', role: 'All-Rounder', country: 'Zimbabwe' },
+                        { name: 'Mujeeb Ur Rahman', role: 'Bowler', country: 'Afghanistan' },
+                        { name: 'Bjorn Fortuin', role: 'All-Rounder', country: 'South Africa' },
+                        { name: 'Kyle Verreynne', role: 'Wicketkeeper-Batter', country: 'South Africa' },
+                        { name: 'Rubin Hermann', role: 'Batter', country: 'South Africa' },
+                        { name: 'Lhuan-dre Pretorius', role: 'Batter', country: 'South Africa' },
+                        { name: 'Gudakesh Motie', role: 'Bowler', country: 'West Indies' },
+                        { name: 'Ottneil Baartman', role: 'Bowler', country: 'South Africa' },
+                        { name: 'Delano Potgieter', role: 'All-Rounder', country: 'South Africa' },
+                        { name: 'Dan Lawrence', role: 'All-Rounder', country: 'England' },
+                        { name: 'Hardus Viljoen', role: 'Bowler', country: 'South Africa' },
+                        { name: 'Asa Tribe', role: 'Batter', country: 'England' },
+                        { name: 'Eshan Malinga', role: 'Bowler', country: 'Sri Lanka' },
+                        { name: 'Keagan Lion-Cachet', role: 'Bowler', country: 'South Africa' },
+                        { name: 'Jacob Johannes Basson', role: 'All-Rounder', country: 'South Africa' },
+                        { name: 'Nqobani Mokoena', role: 'Bowler', country: 'South Africa' },
+                        { name: 'Nqabayomzi Peter', role: 'Bowler', country: 'South Africa' },
+                        { name: 'Vishen Halambage', role: 'Batter', country: 'South Africa' }
+                    ]
+                },
+                'SEC': {
+                    team_id: 'SEC',
+                    team_name: 'Sunrisers Eastern Cape',
+                    owner: 'Sun Group',
+                    logo: 'sec.png',
+                    players: [
+                        { name: 'Tristan Stubbs', role: 'Batter', country: 'South Africa', captain: true },
+                        { name: 'Quinton de Kock', role: 'Wicketkeeper-Batter', country: 'South Africa' },
+                        { name: 'Marco Jansen', role: 'All-Rounder', country: 'South Africa' },
+                        { name: 'Anrich Nortje', role: 'Bowler', country: 'South Africa' },
+                        { name: 'Jonny Bairstow', role: 'Wicketkeeper-Batter', country: 'England' },
+                        { name: 'Matthew Breetzke', role: 'Batter', country: 'South Africa' },
+                        { name: 'Adam Milne', role: 'Bowler', country: 'New Zealand' },
+                        { name: 'Senuran Muthusamy', role: 'All-Rounder', country: 'South Africa' },
+                        { name: 'Patrick Kruger', role: 'All-Rounder', country: 'South Africa' },
+                        { name: 'Lutho Sipamla', role: 'Bowler', country: 'South Africa' },
+                        { name: 'Beyers Swanepoel', role: 'All-Rounder', country: 'South Africa' },
+                        { name: 'Jordan Hermann', role: 'Batter', country: 'South Africa' },
+                        { name: 'Mitchell van Buuren', role: 'All-Rounder', country: 'South Africa' },
+                        { name: 'Lewis Gregory', role: 'All-Rounder', country: 'England' },
+                        { name: 'AM Ghazanfar', role: 'Bowler', country: 'Afghanistan' },
+                        { name: 'James Coles', role: 'All-Rounder', country: 'England' },
+                        { name: 'Chris Wood', role: 'Bowler', country: 'England' },
+                        { name: 'CJ King', role: 'Bowler', country: 'South Africa' },
+                        { name: 'JP King', role: 'Bowler', country: 'South Africa' }
+                    ]
+                }
+            },
+            
+            matches: [
+                { id: 1, team1: 'MICT', team2: 'DSG', date: '2025-01-10', venue: 'Newlands, Cape Town', status: 'completed', result: 'MI Cape Town won by 24 runs' },
+                { id: 2, team1: 'PC', team2: 'SEC', date: '2025-01-11', venue: 'Centurion, Pretoria', status: 'completed', result: 'Pretoria Capitals won by 5 wickets' },
+                { id: 3, team1: 'DSG', team2: 'JSK', date: '2025-01-12', venue: 'Kingsmead, Durban', status: 'live', result: 'In Progress - DSG 156/4 (15.2)' },
+                { id: 4, team1: 'PR', team2: 'PC', date: '2025-01-13', venue: 'Boland Park, Paarl', status: 'upcoming', result: 'Starts at 17:30' },
+                { id: 5, team1: 'SEC', team2: 'MICT', date: '2025-01-14', venue: 'St George\'s Park, Gqeberha', status: 'upcoming', result: 'Starts at 14:00' },
+                { id: 6, team1: 'JSK', team2: 'PR', date: '2025-01-15', venue: 'Wanderers, Johannesburg', status: 'upcoming', result: 'Starts at 17:30' },
+                { id: 7, team1: 'MICT', team2: 'PC', date: '2025-01-16', venue: 'Newlands, Cape Town', status: 'upcoming', result: 'Starts at 14:00' },
+                { id: 8, team1: 'DSG', team2: 'SEC', date: '2025-01-17', venue: 'Kingsmead, Durban', status: 'upcoming', result: 'Starts at 17:30' }
+            ],
+            
+            pointsTable: [
+                { team: 'SEC', played: 10, won: 5, lost: 3, nrr: 1.762, points: 28 },
+                { team: 'PR', played: 10, won: 5, lost: 4, nrr: 0.218, points: 24 },
+                { team: 'PC', played: 10, won: 5, lost: 4, nrr: -0.922, points: 24 },
+                { team: 'JSK', played: 10, won: 4, lost: 4, nrr: 0.45, points: 22 },
+                { team: 'DSG', played: 10, won: 3, lost: 4, nrr: -0.068, points: 19 },
+                { team: 'MICT', played: 10, won: 3, lost: 6, nrr: -1.013, points: 14 }
+            ],
+            
+            news: [
+                { 
+                    id: 1, 
+                    title: 'SA20 Season 4 Kicks Off with Star-Studded Squads', 
+                    date: '2025-01-08', 
+                    excerpt: 'The fourth season of SA20 begins with all six teams announcing their final squads featuring international superstars.',
+                    content: 'The SA20 Season 4 has officially kicked off with all six franchises unveiling their star-studded squads. MI Cape Town, led by Rashid Khan, features a formidable lineup including Trent Boult and Nicholas Pooran. Durban\'s Super Giants boast Jos Buttler and Sunil Narine, while Joburg Super Kings are captained by Faf du Plessis. The season promises thrilling cricket with a perfect blend of international stars and emerging South African talent.' 
+                },
+                { 
+                    id: 2, 
+                    title: 'Rashid Khan Appointed MI Cape Town Captain for Season 4', 
+                    date: '2025-01-07', 
+                    excerpt: 'Afghanistan spin wizard Rashid Khan takes over captaincy of MI Cape Town for the 2025-26 season.',
+                    content: 'In a strategic move, MI Cape Town has appointed Afghanistan\'s Rashid Khan as their captain for SA20 Season 4. The leg-spin maestro, known for his exceptional bowling and leadership skills, takes over from the previous captain. "It\'s an honor to lead such a talented squad. We have a great mix of experience and youth, and I\'m excited about our chances this season," said Rashid during the announcement.' 
+                },
+                { 
+                    id: 3, 
+                    title: 'Jos Buttler Returns to SA20 with Durban\'s Super Giants', 
+                    date: '2025-01-06', 
+                    excerpt: 'England\'s World Cup-winning wicketkeeper-batter Jos Buttler joins Durban\'s Super Giants for Season 4.',
+                    content: 'England\'s explosive opener Jos Buttler has joined Durban\'s Super Giants for SA20 Season 4. Buttler, who was part of the England team that won the 2022 T20 World Cup, brings immense firepower to the DSG batting lineup. "I\'m thrilled to be part of SA20 again. The league has grown tremendously, and I\'m looking forward to contributing to Durban\'s success," said Buttler.' 
+                },
+                { 
+                    id: 4, 
+                    title: 'Tristan Stubbs to Lead Sunrisers Eastern Cape as Captain', 
+                    date: '2025-01-05', 
+                    excerpt: 'Young South African batter Tristan Stubbs named captain of Sunrisers Eastern Cape for Season 4.',
+                    content: 'Sunrisers Eastern Cape have shown faith in young talent by appointing 24-year-old Tristan Stubbs as their captain for SA20 Season 4. Stubbs, known for his aggressive batting and brilliant fielding, will lead a squad that includes Quinton de Kock, Marco Jansen, and Anrich Nortje. "It\'s a huge responsibility, but I\'m ready for the challenge. We have a balanced squad and aim to defend our title," said Stubbs.' 
+                }
+            ]
+        };
+
+        // DOM Elements
+        let currentTeamFilter = 'all';
+        let currentRoleFilter = 'all';
+        let allPlayers = [];
+        let sortedBy = 'points';
+        let sortDirection = 'desc';
+
+        // Initialize the application
+        document.addEventListener('DOMContentLoaded', function() {
+            // Extract all players from teams
+            Object.keys(sa20Data.teams).forEach(teamId => {
+                sa20Data.teams[teamId].players.forEach(player => {
+                    player.team = teamId;
+                    allPlayers.push(player);
+                });
+            });
+            
+            // Initialize sections
+            loadSquad();
+            loadPlayers();
+            loadMatches();
+            loadPointsTable();
+            loadNews();
+            
+            // Setup event listeners
+            setupEventListeners();
+            setupNavbarScroll();
+            
+            // Update season info
+            document.querySelector('.season-badge').textContent = 'Season 4';
+            document.querySelector('.season-title').textContent = sa20Data.season;
+        });
+
+        // Setup event listeners
+        function setupEventListeners() {
+            // Team filter buttons
+            document.querySelectorAll('.filter-team-btn').forEach(button => {
+                button.addEventListener('click', function() {
+                    document.querySelectorAll('.filter-team-btn').forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    currentTeamFilter = this.dataset.team;
+                    loadSquad();
+                });
+            });
+            
+            // Role filter buttons
+            document.querySelectorAll('.filter-role-btn').forEach(button => {
+                button.addEventListener('click', function() {
+                    document.querySelectorAll('.filter-role-btn').forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    currentRoleFilter = this.dataset.role;
+                    loadSquad();
+                });
+            });
+            
+            // Player search input
+            document.getElementById('player-search').addEventListener('input', function() {
+                loadPlayers(this.value.toLowerCase());
+            });
+            
+            // Enter key for search
+            document.getElementById('player-search').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    searchPlayers();
+                }
+            });
+            
+            // Points table sorting
+            document.querySelectorAll('.sortable').forEach(th => {
+                th.addEventListener('click', function() {
+                    const sortField = this.dataset.sort;
+                    sortPointsTable(sortField);
+                });
+            });
+        }
+
+        // Navbar scroll effect
+        function setupNavbarScroll() {
+            window.addEventListener('scroll', function() {
+                const navbar = document.querySelector('.navbar-sa20');
+                if (window.scrollY > 100) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+                
+                // Update active nav link based on scroll position
+                const sections = document.querySelectorAll('section');
+                const navLinks = document.querySelectorAll('.nav-link');
+                
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    if (scrollY >= (sectionTop - 200)) {
+                        current = section.getAttribute('id');
+                    }
+                });
+                
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${current}`) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+        }
+
+        // Load squad based on filters
+        function loadSquad() {
+            const container = document.getElementById('squad-container');
+            container.innerHTML = '';
+            
+            let playersToShow = [];
+            
+            if (currentTeamFilter === 'all') {
+                playersToShow = [...allPlayers];
+            } else {
+                playersToShow = sa20Data.teams[currentTeamFilter].players.map(player => ({
+                    ...player,
+                    team: currentTeamFilter
+                }));
+            }
+            
+            if (currentRoleFilter !== 'all') {
+                if (currentRoleFilter === 'Wicketkeeper') {
+                    // Handle wicketkeeper filter (both Wicketkeeper and Wicketkeeper-Batter)
+                    playersToShow = playersToShow.filter(player => 
+                        player.role === 'Wicketkeeper' || player.role === 'Wicketkeeper-Batter'
+                    );
+                } else {
+                    playersToShow = playersToShow.filter(player => player.role === currentRoleFilter);
+                }
+            }
+            
+            if (playersToShow.length === 0) {
+                container.innerHTML = '<div class="col-12 text-center"><p class="text-muted">No players found for the selected filters.</p></div>';
+                return;
+            }
+            
+            playersToShow.forEach(player => {
+                const team = sa20Data.teams[player.team];
+                const playerCard = createPlayerCard(player, team);
+                container.appendChild(playerCard);
+            });
+        }
+
+        // Create player card element
+        function createPlayerCard(player, team) {
+            const div = document.createElement('div');
+            const initials = player.name.split(' ').map(n => n[0]).join('');
+            
+            // Determine role class for styling
+            let roleClass = '';
+            if (player.role.includes('Batter')) roleClass = 'role-batter';
+            else if (player.role.includes('Bowler')) roleClass = 'role-bowler';
+            else if (player.role.includes('All-Rounder')) roleClass = 'role-allrounder';
+            else if (player.role.includes('Wicketkeeper')) roleClass = 'role-wk';
+            
+            div.innerHTML = `
+                <div class="player-card text-center" onclick="showPlayerModal('${player.team}', '${player.name}')">
+                    <div class="player-img">
+                        ${initials}
+                    </div>
+                    <div class="player-name">${player.name}</div>
+                    <div class="player-role ${roleClass}">${player.role}</div>
+                    <div class="player-nationality">
+                        <i class="bi bi-flag me-1"></i>${player.country}
+                    </div>
+                    ${player.captain ? '<div class="captain-badge">Captain</div>' : ''}
+                    <div class="mt-3">
+                        <img src="${team.logo}" alt="${team.team_name}" style="height: 30px;">
+                        <small class="d-block mt-1">${team.team_name}</small>
+                    </div>
+                </div>
+            `;
+            
+            return div;
+        }
+
+        // Filter team from hero section
+        function filterTeam(teamId) {
+            document.querySelectorAll('.filter-team-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelector(`.filter-team-btn[data-team="${teamId}"]`).classList.add('active');
+            currentTeamFilter = teamId;
+            loadSquad();
+            scrollToSection('teams');
+        }
+
+        // Load players with search
+        function loadPlayers(searchTerm = '') {
+            const container = document.getElementById('players-container');
+            container.innerHTML = '';
+            
+            let filteredPlayers = allPlayers;
+            
+            if (searchTerm) {
+                filteredPlayers = allPlayers.filter(player => 
+                    player.name.toLowerCase().includes(searchTerm)
+                );
+            }
+            
+            if (filteredPlayers.length === 0) {
+                container.innerHTML = '<div class="col-12 text-center"><p class="text-muted">No players found.</p></div>';
+                return;
+            }
+            
+            // Sort players by name
+            filteredPlayers.sort((a, b) => a.name.localeCompare(b.name));
+            
+            filteredPlayers.slice(0, 12).forEach(player => {
+                const team = sa20Data.teams[player.team];
+                const playerCard = createPlayerCard(player, team);
+                container.appendChild(playerCard);
+            });
+            
+            if (filteredPlayers.length > 12) {
+                const showMoreDiv = document.createElement('div');
+                showMoreDiv.className = 'col-12 text-center mt-4';
+                showMoreDiv.innerHTML = `
+                    <button class="btn btn-outline-primary" onclick="showAllPlayers()">
+                        Show All ${filteredPlayers.length} Players
+                    </button>
+                `;
+                container.appendChild(showMoreDiv);
+            }
+        }
+
+        // Search players
+        function searchPlayers() {
+            const searchTerm = document.getElementById('player-search').value.toLowerCase();
+            loadPlayers(searchTerm);
+        }
+
+        // Show all players
+        function showAllPlayers() {
+            const searchTerm = document.getElementById('player-search').value.toLowerCase();
+            const container = document.getElementById('players-container');
+            const filteredPlayers = allPlayers.filter(player => 
+                !searchTerm || player.name.toLowerCase().includes(searchTerm)
+            );
+            
+            container.innerHTML = '';
+            filteredPlayers.forEach(player => {
+                const team = sa20Data.teams[player.team];
+                const playerCard = createPlayerCard(player, team);
+                container.appendChild(playerCard);
+            });
+        }
+
+        // Load matches
+        function loadMatches() {
+            const container = document.getElementById('matches-container');
+            container.innerHTML = '';
+            
+            sa20Data.matches.forEach(match => {
+                const team1 = sa20Data.teams[match.team1];
+                const team2 = sa20Data.teams[match.team2];
+                const col = document.createElement('div');
+                col.className = 'col-lg-4 col-md-6 mb-4';
+                
+                const matchDate = new Date(match.date);
+                const formattedDate = matchDate.toLocaleDateString('en-US', { 
+                    weekday: 'short', 
+                    month: 'short', 
+                    day: 'numeric' 
+                });
+                
+                col.innerHTML = `
+                    <div class="match-card ${match.status === 'live' ? 'live' : ''}">
+                        <div class="d-flex justify-content-between align-items-start mb-3">
+                            <div>
+                                <span class="match-status ${match.status === 'live' ? 'live' : ''}">
+                                    ${match.status.toUpperCase()}
+                                </span>
+                            </div>
+                            <div class="text-end">
+                                <small class="text-muted">${formattedDate}</small>
+                            </div>
+                        </div>
+                        
+                        <div class="match-teams d-flex align-items-center justify-content-between mb-3">
+                            <div class="text-center">
+                                <img src="${team1.logo}" alt="${team1.team_name}" style="height: 50px; margin-bottom: 10px;">
+                                <div>${team1.team_name}</div>
+                            </div>
+                            <div class="mx-3">VS</div>
+                            <div class="text-center">
+                                <img src="${team2.logo}" alt="${team2.team_name}" style="height: 50px; margin-bottom: 10px;">
+                                <div>${team2.team_name}</div>
+                            </div>
+                        </div>
+                        
+                        <div class="text-center">
+                            <small class="text-muted d-block mb-2">
+                                <i class="bi bi-geo-alt me-1"></i>${match.venue}
+                            </small>
+                            <div class="result">${match.result}</div>
+                        </div>
+                    </div>
+                `;
+                
+                container.appendChild(col);
+            });
+        }
+
+        // Load points table
+        function loadPointsTable() {
+            const container = document.getElementById('points-table-body');
+            container.innerHTML = '';
+            
+            const sortedTable = [...sa20Data.pointsTable].sort((a, b) => {
+                if (sortDirection === 'desc') {
+                    return b[sortedBy] - a[sortedBy];
+                } else {
+                    return a[sortedBy] - b[sortedBy];
+                }
+            });
+            
+            sortedTable.forEach((teamData, index) => {
+                const team = sa20Data.teams[teamData.team];
+                const row = document.createElement('tr');
+                row.className = 'team-row';
+                
+                row.innerHTML = `
+                    <td>${index + 1}</td>
+                    <td>
+                        <div class="d-flex align-items-center">
+                            <img src="${team.logo}" alt="${team.team_name}" style="height: 30px; width: 30px; margin-right: 10px;">
+                            ${team.team_name}
+                        </div>
+                    </td>
+                    <td>${teamData.played}</td>
+                    <td>${teamData.won}</td>
+                    <td>${teamData.lost}</td>
+                    <td>${teamData.nrr > 0 ? '+' : ''}${teamData.nrr.toFixed(2)}</td>
+                    <td><strong>${teamData.points}</strong></td>
+                `;
+                
+                container.appendChild(row);
+            });
+        }
+
+        // Sort points table
+        function sortPointsTable(field) {
+            if (sortedBy === field) {
+                sortDirection = sortDirection === 'desc' ? 'asc' : 'desc';
+            } else {
+                sortedBy = field;
+                sortDirection = 'desc';
+            }
+            
+            // Update active sort indicator
+            document.querySelectorAll('.sortable').forEach(th => {
+                th.classList.remove('active-sort');
+            });
+            const sortHeader = document.querySelector(`[data-sort="${field}"]`);
+            if (sortHeader) sortHeader.classList.add('active-sort');
+            
+            loadPointsTable();
+        }
+
+        // Load news
+        function loadNews() {
+            const container = document.getElementById('news-container');
+            container.innerHTML = '';
+            
+            sa20Data.news.forEach(newsItem => {
+                const col = document.createElement('div');
+                col.className = 'col-lg-3 col-md-6 mb-4';
+                
+                const newsDate = new Date(newsItem.date);
+                const formattedDate = newsDate.toLocaleDateString('en-US', { 
+                    month: 'short', 
+                    day: 'numeric',
+                    year: 'numeric'
+                });
+                
+                col.innerHTML = `
+                    <div class="news-card">
+                        <div class="news-img">
+                            <i class="bi bi-newspaper"></i>
+                        </div>
+                        <div class="news-content">
+                            <div class="news-date">${formattedDate}</div>
+                            <h5 class="news-title mb-3">${newsItem.title}</h5>
+                            <p class="text-secondary">${newsItem.excerpt}</p>
+                            <button class="btn btn-sm btn-outline-primary mt-2" onclick="showNewsModal(${newsItem.id})">
+                                Read More
+                            </button>
+                        </div>
+                    </div>
+                `;
+                
+                container.appendChild(col);
+            });
+        }
+
+        // Show player modal
+        function showPlayerModal(teamId, playerName) {
+            const team = sa20Data.teams[teamId];
+            const player = team.players.find(p => p.name === playerName);
+            if (!player) return;
+            
+            const initials = player.name.split(' ').map(n => n[0]).join('');
+            
+            document.getElementById('playerModalTitle').textContent = player.name;
+            document.getElementById('playerModalBody').innerHTML = `
+                <div class="row">
+                    <div class="col-md-4 text-center">
+                        <div class="player-img d-flex align-items-center justify-content-center mx-auto mb-3">
+                            ${initials}
+                        </div>
+                        <h4>${player.name}</h4>
+                        <div class="player-role mb-2">${player.role}</div>
+                        <div class="player-nationality mb-4">
+                            <i class="bi bi-flag me-1"></i>${player.country}
+                        </div>
+                        ${player.captain ? '<div class="captain-badge mb-3">Team Captain</div>' : ''}
+                        <div>
+                            <img src="${team.logo}" alt="${team.team_name}" style="height: 60px;">
+                            <div class="mt-2">${team.team_name}</div>
+                            <small class="text-muted">${team.owner}</small>
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <h5>Player Profile</h5>
+                        <p>${getPlayerDescription(player)}</p>
+                        
+                        <h5 class="mt-4">Season 4 Stats</h5>
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="bg-dark p-3 rounded text-center mb-3">
+                                    <div class="text-primary">Matches</div>
+                                    <div class="h4">${getRandomStat(5, 8)}</div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="bg-dark p-3 rounded text-center mb-3">
+                                    <div class="text-success">${player.role.includes('Batter') ? 'Runs' : 'Wickets'}</div>
+                                    <div class="h4">${player.role.includes('Batter') ? getRandomStat(150, 350) : getRandomStat(8, 15)}</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <h5>Career Highlights</h5>
+                        <ul>
+                            <li>SA20 Season 4 participant</li>
+                            <li>International cricket experience</li>
+                            <li>Key player for ${team.team_name}</li>
+                            <li>${player.role} specialist</li>
+                        </ul>
+                    </div>
+                </div>
+            `;
+            
+            const modal = new bootstrap.Modal(document.getElementById('playerModal'));
+            modal.show();
+        }
+
+        // Get player description
+        function getPlayerDescription(player) {
+            const descriptions = {
+                'Batter': 'Explosive batsman known for aggressive stroke play and ability to score quick runs.',
+                'Bowler': 'Skilled bowler with excellent control and variety in deliveries.',
+                'All-Rounder': 'Versatile player contributing with both bat and ball.',
+                'Wicketkeeper-Batter': 'Dynamic wicketkeeper-batter with excellent glovework and batting skills.',
+                'Wicketkeeper': 'Specialist wicketkeeper with safe hands and quick reflexes.'
+            };
+            
+            return descriptions[player.role] || 'Talented cricket player representing their country in SA20 Season 4.';
+        }
+
+        // Get random stat
+        function getRandomStat(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+
+        // Show news modal
+        function showNewsModal(newsId) {
+            const newsItem = sa20Data.news.find(n => n.id === newsId);
+            if (!newsItem) return;
+            
+            const newsDate = new Date(newsItem.date);
+            const formattedDate = newsDate.toLocaleDateString('en-US', { 
+                month: 'long', 
+                day: 'numeric',
+                year: 'numeric'
+            });
+            
+            document.getElementById('newsModalTitle').textContent = newsItem.title;
+            document.getElementById('newsModalBody').innerHTML = `
+                <div class="news-date mb-3">
+                    <i class="bi bi-calendar me-2"></i>${formattedDate}
+                </div>
+                <p>${newsItem.content}</p>
+                <div class="mt-4 p-3 bg-dark rounded">
+                    <h6>About SA20 Season 4</h6>
+                    <p class="mb-0">The fourth season of SA20 features 6 teams with 34 matches scheduled from January to February 2026. All matches are broadcast live across South Africa and internationally.</p>
+                </div>
+            `;
+            
+            const modal = new bootstrap.Modal(document.getElementById('newsModal'));
+            modal.show();
+        }
+
+        // Scroll to section
+        function scrollToSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            if (section) {
+                window.scrollTo({
+                    top: section.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+            }
+        }
+        // ========== NEW: INTERACTIVE FAN ZONE FUNCTIONS ==========
+
+// 1. onload Event - Show Professional Welcome Banner
+window.addEventListener('load', function() {
+    // Use getElementById
+    const bannerContainer = document.getElementById('welcome-banner-container');
+    
+    // Use createElement and appendChild
+    const welcomeBanner = document.createElement('div');
+    welcomeBanner.className = 'welcome-banner';
+    welcomeBanner.id = 'dynamic-welcome-banner';
+    
+    // Use innerHTML
+    welcomeBanner.innerHTML = `
+        <div class="d-flex align-items-center">
+            <i class="bi bi-megaphone"></i>
+            <span><strong>Welcome to SA20 Season 4 Fan Zone!</strong> Interact with live stats, search players, and book your match tickets.</span>
+        </div>
+        <div class="welcome-close" onclick="closeWelcomeBanner()">
+            <i class="bi bi-x-lg"></i>
+        </div>
+    `;
+    
+    bannerContainer.appendChild(welcomeBanner);
+    
+    // Auto hide after 8 seconds
+    setTimeout(function() {
+        const banner = document.getElementById('dynamic-welcome-banner');
+        if (banner) {
+            banner.style.opacity = '0';
+            banner.style.transition = 'opacity 1s';
+            setTimeout(function() {
+                if (banner.parentNode) {
+                    banner.parentNode.removeChild(banner);
+                }
+            }, 1000);
+        }
+    }, 8000);
+});
+
+// Close welcome banner function
+function closeWelcomeBanner() {
+    const banner = document.getElementById('dynamic-welcome-banner');
+    if (banner) {
+        banner.style.opacity = '0';
+        setTimeout(function() {
+            if (banner.parentNode) {
+                banner.parentNode.removeChild(banner);
+            }
+        }, 300);
+    }
+}
+
+// 2. Strike Rate Calculator
+function calculateStrikeRate() {
+    // Use getElementById
+    const runsInput = document.getElementById('runs-input');
+    const ballsInput = document.getElementById('balls-input');
+    const resultDiv = document.getElementById('sr-result');
+    const srValue = document.getElementById('sr-value');
+    
+    const runs = parseInt(runsInput.value) || 0;
+    const balls = parseInt(ballsInput.value) || 0;
+    
+    let strikeRate = 0;
+    
+    if (balls > 0) {
+        strikeRate = (runs / balls) * 100;
+    }
+    
+    // Use textContent
+    srValue.textContent = strikeRate.toFixed(2);
+    
+    // Style manipulation
+    resultDiv.classList.add('show');
+    
+    // Color coding based on strike rate
+    if (strikeRate >= 150) {
+        srValue.style.background = 'linear-gradient(135deg, #00ff88, #00ffaa)';
+        srValue.style.webkitBackgroundClip = 'text';
+    } else if (strikeRate >= 120) {
+        srValue.style.background = 'linear-gradient(135deg, #0077ff, #00ff88)';
+        srValue.style.webkitBackgroundClip = 'text';
+    } else {
+        srValue.style.background = 'linear-gradient(135deg, #ff6b6b, #ff8e8e)';
+        srValue.style.webkitBackgroundClip = 'text';
+    }
+}
+
+// 3. Live Player Search Filter
+function filterFanPlayers() {
+    // Use getElementById
+    const searchInput = document.getElementById('fan-player-search');
+    const searchTerm = searchInput.value.toLowerCase();
+    const resultsContainer = document.getElementById('player-search-results');
+    
+    // Clear previous results
+    resultsContainer.innerHTML = '';
+    
+    // Get all players (use existing allPlayers array)
+    let filteredPlayers = allPlayers.filter(player => 
+        player.name.toLowerCase().includes(searchTerm)
+    );
+    
+    if (filteredPlayers.length === 0) {
+        resultsContainer.innerHTML = '<div class="text-center text-secondary p-3">No players found</div>';
+        return;
+    }
+    
+    // Limit to 10 results for better UX
+    filteredPlayers.slice(0, 10).forEach(player => {
+        const team = sa20Data.teams[player.team];
+        
+        // Use createElement and appendChild
+        const searchItem = document.createElement('div');
+        searchItem.className = 'search-item';
+        
+        // Get initials
+        const initials = player.name.split(' ').map(n => n[0]).join('');
+        
+        // Use innerHTML
+        searchItem.innerHTML = `
+            <div class="search-item-logo">${initials}</div>
+            <div class="search-item-details">
+                <div class="search-item-name">${player.name}</div>
+                <div class="search-item-role">
+                    <span class="role-${player.role.includes('Batter') ? 'batter' : 
+                                  player.role.includes('Bowler') ? 'bowler' : 
+                                  player.role.includes('All-Rounder') ? 'allrounder' : 'wk'}">
+                        ${player.role}
+                    </span> • ${team.team_name}
+                </div>
+            </div>
+            <div class="ms-auto">
+                <img src="${team.logo}" alt="${team.team_name}" style="height: 25px;">
+            </div>
+        `;
+        
+        resultsContainer.appendChild(searchItem);
+    });
+}
+
+// 4. Team Selector Dropdown - Show Captain and Team Info
+function updateTeamInfo() {
+    // Use querySelector
+    const teamSelector = document.querySelector('#team-selector');
+    const teamId = teamSelector.value;
+    const infoPanel = document.getElementById('team-info-panel');
+    
+    if (!teamId) {
+        infoPanel.style.display = 'none';
+        return;
+    }
+    
+    // Get team data
+    const team = sa20Data.teams[teamId];
+    
+    if (team) {
+        // Find captain
+        const captain = team.players.find(p => p.captain === true);
+        
+        // Use textContent to update elements
+        document.getElementById('selected-team-name').textContent = team.team_name;
+        document.getElementById('team-captain-name').textContent = captain ? captain.name : 'Not assigned';
+        document.getElementById('team-owner-name').textContent = team.owner;
+        document.getElementById('team-squad-size').textContent = team.players.length + ' players';
+        
+        // Style manipulation
+        infoPanel.style.display = 'block';
+    }
+}
+
+// 5. Ticket Booking Form with Confirmation
+function bookTickets(event) {
+    // Use preventDefault
+    event.preventDefault();
+    
+    // Use getElementById
+    const name = document.getElementById('fan-name').value;
+    const email = document.getElementById('fan-email').value;
+    const ticketCount = document.getElementById('ticket-count').value;
+    
+    // Get confirmation elements
+    const confirmationDiv = document.getElementById('booking-confirmation');
+    const confirmationMsg = document.getElementById('confirmation-message');
+    
+    // Use textContent
+    confirmationMsg.textContent = `Thank you ${name}! ${ticketCount} ticket(s) booked. Confirmation sent to ${email}`;
+    
+    // Style manipulation
+    confirmationDiv.style.display = 'block';
+    
+    // Reset form
+    document.getElementById('ticket-booking-form').reset();
+    
+    // Auto hide confirmation after 5 seconds
+    setTimeout(function() {
+        confirmationDiv.style.opacity = '0';
+        setTimeout(function() {
+            confirmationDiv.style.display = 'none';
+            confirmationDiv.style.opacity = '1';
+        }, 500);
+    }, 5000);
+}
+
+// Initialize fan zone player search on page load
+document.addEventListener('DOMContentLoaded', function() {
+    // Pre-populate player search with some players
+    setTimeout(function() {
+        const searchInput = document.getElementById('fan-player-search');
+        if (searchInput) {
+            // Use getElementsByClassName to demonstrate usage
+            const fanCards = document.getElementsByClassName('fan-card');
+            if (fanCards.length > 0) {
+                // Just show initial players without search term
+                filterFanPlayers();
+            }
+        }
+    }, 500);
+});
+    </script>
+</body>
+</html>
