@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Management System</title>
+    <style>
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background-color: #f4f4f9; 
+            padding: 20px; 
+            color: #333;
+        }
+        .event-container { 
+            max-width: 800px; 
+            margin: 0 auto; 
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .event { 
+            background: #fff; 
+            padding: 25px; 
+            margin-bottom: 20px; 
+            border-radius: 8px; 
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1); 
+            transition: background-color 0.3s; 
+        }
+        .event h3 { 
+            margin-top: 0; 
+            transition: color 0.3s; 
+        }
+        .event p {
+            color: #666;
+            margin-bottom: 15px;
+        }
+        .details { 
+            display: none; 
+            margin-top: 15px; 
+            padding-top: 15px; 
+            border-top: 1px solid #eee; 
+            color: #444;
+        }
+        button { 
+            padding: 10px 20px; 
+            background: #007bff; 
+            color: white; 
+            border: none; 
+            border-radius: 4px; 
+            cursor: pointer; 
+            transition: background 0.3s; 
+            font-weight: 600; 
+            font-size: 14px;
+        }
+        button:hover { 
+            background: #0056b3; 
+        }
+        .register-btn { 
+            background: #28a745; 
+            margin-top: 10px;
+        }
+        .register-btn:hover { 
+            background: #218838; 
+        }
+    </style>
+    <!-- Include jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+    <div class="event-container">
+        <h1>Upcoming Events</h1>
+        
+        <div class="event">
+            <h3>Tech Conference 2026</h3>
+            <p>Date: October 15, 2026</p>
+            <button class="toggle-details">Show Details</button>
+            <div class="details">
+                <p>Join us for the biggest technology conference of the year featuring top speakers, innovative workshops, and networking opportunities.</p>
+                <button class="register-btn">Register</button>
+            </div>
+        </div>
+
+        <div class="event">
+            <h3>Global Music Festival</h3>
+            <p>Date: November 5, 2026</p>
+            <button class="toggle-details">Show Details</button>
+            <div class="details">
+                <p>Experience a weekend of amazing live performances by world-renowned artists across multiple stages. Food trucks and merch stalls available.</p>
+                <button class="register-btn">Register</button>
+            </div>
+        </div>
+
+        <div class="event">
+            <h3>Modern Art Exhibition</h3>
+            <p>Date: December 10, 2026</p>
+            <button class="toggle-details">Show Details</button>
+            <div class="details">
+                <p>Explore contemporary artworks from emerging and established artists. Special guided tours available on weekends.</p>
+                <button class="register-btn">Register</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            $(".toggle-details").click(function() {
+                // DOM Traversing methods
+                var $eventDiv = $(this).closest('.event');
+                var $details = $(this).siblings('.details');
+                var $h3 = $(this).siblings('h3');
+                var $btn = $(this);
+                
+                var isHidden = $details.is(':hidden');
+
+                if (isHidden) {
+                    // Display hidden details using slideToggle()
+                    $details.slideToggle(300);
+                    
+                    // Simultaneously change button text
+                    $btn.text("Hide Details");
+                    
+                    // Change background color of only the selected event using css()
+                    $eventDiv.css("background-color", "#f0f8ff"); // AliceBlue
+                    
+                    // Highlight corresponding <h3> element using traversing
+                    $h3.css("color", "#0056b3");
+                    
+                    // Retrieve Event Title and display in alert box
+                    // Delaying alert slightly so slideToggle animation can start and UI updates first
+                    setTimeout(function() {
+                        alert("Viewing details for: " + $h3.text());
+                    }, 10);
+                } else {
+                    // Revert changes
+                    $details.slideToggle(300);
+                    $btn.text("Show Details");
+                    $eventDiv.css("background-color", "#fff");
+                    $h3.css("color", "#333");
+                }
+            });
+
+            // Register button redirection
+            $(".register-btn").click(function() {
+                // Retrieve the Event Title using traversing methods
+                var eventName = $(this).closest('.event').find('h3').text();
+                // Redirect and pass data to registration page
+                window.location.href = "register.html?eventName=" + encodeURIComponent(eventName);
+            });
+        });
+    </script>
+</body>
+</html>
