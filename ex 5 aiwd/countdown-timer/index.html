@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Countdown Timer</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="countdown-wrapper">
+        <div class="glass-panel">
+            <h1>Tech Summit 2026</h1>
+            <p class="subtitle">Registration closes in</p>
+            
+            <div id="countdown" class="countdown-grid">
+                <div class="time-box">
+                    <span id="days">00</span>
+                    <span class="label">Days</span>
+                </div>
+                <div class="time-box">
+                    <span id="hours">00</span>
+                    <span class="label">Hours</span>
+                </div>
+                <div class="time-box">
+                    <span id="minutes">00</span>
+                    <span class="label">Minutes</span>
+                </div>
+                <div class="time-box">
+                    <span id="seconds">00</span>
+                    <span class="label">Seconds</span>
+                </div>
+            </div>
+
+            <div id="closed-message" class="hidden">
+                <h2>Registration Closed</h2>
+            </div>
+            
+            <button class="register-btn" id="register-btn">Register Now</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz App with Timer</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Quick Quiz</h1>
+            <div class="timer-container">
+                <span id="timer">10</span>s remaining
+                <div id="warning-msg" class="hidden">Only 5 seconds remaining!</div>
+            </div>
+        </div>
+        
+        <form id="quiz-form">
+            <!-- Question 1 -->
+            <div class="question-block">
+                <p>1. What does HTML stand for?</p>
+                <label><input type="radio" name="q1" value="A"> Hyper Text Markup Language</label>
+                <label><input type="radio" name="q1" value="B"> High Text Machine Language</label>
+                <label><input type="radio" name="q1" value="C"> Hyper Text Multiple Language</label>
+            </div>
+            
+            <!-- Question 2 -->
+            <div class="question-block">
+                <p>2. What does CSS stand for?</p>
+                <label><input type="radio" name="q2" value="A"> Cascading Style Sheets</label>
+                <label><input type="radio" name="q2" value="B"> Colorful Style Sheets</label>
+                <label><input type="radio" name="q2" value="C"> Computer Style Sheets</label>
+            </div>
+
+            <!-- Question 3 -->
+            <div class="question-block">
+                <p>3. Which HTML tag is used for the largest heading?</p>
+                <label><input type="radio" name="q3" value="A"> &lt;heading&gt;</label>
+                <label><input type="radio" name="q3" value="B"> &lt;h6&gt;</label>
+                <label><input type="radio" name="q3" value="C"> &lt;h1&gt;</label>
+            </div>
+
+            <!-- Question 4 -->
+            <div class="question-block">
+                <p>4. Inside which HTML element do we put the JavaScript?</p>
+                <label><input type="radio" name="q4" value="A"> &lt;javascript&gt;</label>
+                <label><input type="radio" name="q4" value="B"> &lt;scripting&gt;</label>
+                <label><input type="radio" name="q4" value="C"> &lt;script&gt;</label>
+            </div>
+
+            <!-- Question 5 -->
+            <div class="question-block">
+                <p>5. How do you write "Hello World" in an alert box?</p>
+                <label><input type="radio" name="q5" value="A"> alert("Hello World");</label>
+                <label><input type="radio" name="q5" value="B"> msg("Hello World");</label>
+                <label><input type="radio" name="q5" value="C"> msgBox("Hello World");</label>
+            </div>
+
+            <button type="submit" id="submit-btn">Submit Quiz</button>
+        </form>
+
+        <div id="result-container" class="hidden">
+            <h2>Your Score: <span id="score">0</span>/5</h2>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
