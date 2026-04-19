@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Event Registration</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Admin Dashboard</h1>
+        <p class="subtitle">Search for student registration details.</p>
+        
+        <form id="searchForm">
+            <div class="form-group">
+                <label for="search-regno">Student Register Number</label>
+                <input type="text" id="search-regno" required placeholder="Enter Register Number (e.g. 23CS101)">
+            </div>
+            
+            <button type="submit" class="btn" style="background: linear-gradient(135deg, #10b981, #059669);">Search</button>
+        </form>
+
+        <div id="error-message" class="error-msg"></div>
+
+        <div id="result-box" class="result-box">
+            <div class="result-item"><strong>Register Number :</strong> <span id="res-regno"></span></div>
+            <div class="result-item"><strong>Name :</strong> <span id="res-name"></span></div>
+            <div class="result-item"><strong>Events :</strong> <span id="res-events"></span></div>
+        </div>
+
+        <div class="links">
+            <a href="register.html">Back to Registration</a>
+        </div>
+    </div>
+
+    <script>
+        const searchForm = document.getElementById('searchForm');
+        const errorMsg = document.getElementById('error-message');
+        const resultBox = document.getElementById('result-box');
+
+        searchForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            errorMsg.style.display = "none";
+            resultBox.style.display = "none";
+
+            const regno = document.getElementById('search-regno').value.trim();
+
+            if (!regno) {
+                errorMsg.textContent = "Please enter a register number.";
+                errorMsg.style.display = "block";
+                return;
+            }
+
+            try {
+                const response = await fetch(`/search/${encodeURIComponent(regno)}`);
+                const data = await response.json();
+
+                if (response.ok) {
+                    document.getElementById('res-regno').textContent = data.regno;
+                    document.getElementById('res-name').textContent = data.name;
+                    document.getElementById('res-events').textContent = data.events;
+                    resultBox.style.display = "block";
+                } else {
+                    errorMsg.textContent = data.error;
+                    errorMsg.style.display = "block";
+                }
+            } catch (err) {
+                errorMsg.textContent = "Server error. Please try again later.";
+                errorMsg.style.display = "block";
+            }
+        });
+    </script>
+</body>
+</html>

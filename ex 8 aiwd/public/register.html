@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Registration</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Register for Events</h1>
+        <p class="subtitle">Select up to 3 events to participate.</p>
+        
+        <form id="registrationForm" action="/register" method="POST">
+            <div class="form-group">
+                <label for="regno">Register Number</label>
+                <input type="text" id="regno" name="regno" required placeholder="e.g. 23CS101">
+            </div>
+            
+            <div class="form-group">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" name="name" required placeholder="John Doe">
+            </div>
+            
+            <div class="form-group">
+                <label>Select Events (Max 3)</label>
+                <div class="checkbox-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox" name="events" value="Coding Challenge">
+                        <span class="custom-checkbox"></span>
+                        Coding Challenge
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" name="events" value="Debugging Contest">
+                        <span class="custom-checkbox"></span>
+                        Debugging Contest
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" name="events" value="Web Design">
+                        <span class="custom-checkbox"></span>
+                        Web Design
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" name="events" value="Quiz Competition">
+                        <span class="custom-checkbox"></span>
+                        Quiz Competition
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" name="events" value="Paper Presentation">
+                        <span class="custom-checkbox"></span>
+                        Paper Presentation
+                    </label>
+                </div>
+                <div id="error-message" class="error-msg"></div>
+            </div>
+            
+            <button type="submit" class="btn">Register Now</button>
+            <div class="links">
+                <a href="admin.html">Go to Admin Page</a>
+            </div>
+        </form>
+
+        <div id="success-message" class="success-msg" style="display: none;"></div>
+    </div>
+
+    <script>
+        const form = document.getElementById('registrationForm');
+        const checkboxes = document.querySelectorAll('input[type="checkbox"][name="events"]');
+        const errorMsg = document.getElementById('error-message');
+        const successMsg = document.getElementById('success-message');
+
+        // Client-side validation: Max 3 checkboxes
+        checkboxes.forEach(box => {
+            box.addEventListener('change', () => {
+                const checkedCount = document.querySelectorAll('input[type="checkbox"][name="events"]:checked').length;
+                if (checkedCount > 3) {
+                    box.checked = false;
+                    errorMsg.textContent = "You can select a maximum of 3 events.";
+                    errorMsg.style.display = "block";
+                } else {
+                    errorMsg.style.display = "none";
+                }
+            });
+        });
+
+        // Form submission handling using Fetch API
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            errorMsg.style.display = "none";
+            successMsg.style.display = "none";
+
+            const checkedCount = document.querySelectorAll('input[type="checkbox"][name="events"]:checked').length;
+            if (checkedCount === 0) {
+                errorMsg.textContent = "Please select at least one event.";
+                errorMsg.style.display = "block";
+                return;
+            }
+
+            const formData = new URLSearchParams();
+            formData.append('regno', document.getElementById('regno').value);
+            formData.append('name', document.getElementById('name').value);
+            document.querySelectorAll('input[type="checkbox"][name="events"]:checked').forEach(cb => {
+                formData.append('events', cb.value);
+            });
+
+            try {
+                const response = await fetch('/register', {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded'
+                    }
+                });
+                
+                const data = await response.json();
+                
+                if (response.ok) {
+                    successMsg.textContent = data.message;
+                    successMsg.style.display = "block";
+                    form.reset();
+                } else {
+                    errorMsg.textContent = data.error;
+                    errorMsg.style.display = "block";
+                }
+            } catch (err) {
+                errorMsg.textContent = "Server error. Please try again later.";
+                errorMsg.style.display = "block";
+            }
+        });
+    </script>
+</body>
+</html>
